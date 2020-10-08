@@ -13,4 +13,3 @@ ldd ".build/release/$executable" | grep swift | awk '{print $3}' | xargs cp -Lv 
 cd "$target"
 ln -s "$executable" "bootstrap"
 zip --symlinks "$executable".zip *
-
