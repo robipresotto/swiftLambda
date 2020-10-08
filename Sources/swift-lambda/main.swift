@@ -10,5 +10,5 @@ private struct Response: Codable {
 }
 
 Lambda.run { (context, request: Request, callback: @escaping (Result<Response, Error>) -> Void) in
-  callback(.success(Response(message: "Hello, \(request.name)")))
+  callback(.success(Response(message: "Hello, \(request.name)!")))
 }
