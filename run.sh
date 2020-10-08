@@ -1,12 +1,9 @@
 #!/bin/sh
 
-#
-# $1= project lambda name
-# 
-
 set -eu
 
-chmod 755 ./scripts/builder.sh
-chmod 755 ./scripts/package.sh
+read -p "Project name: " projectName
+read -p "AWS profile: " awsProfile
 
-./scripts/builder.sh $1
+bash scripts/clean.sh && \
+bash scripts/builder.sh $projectName $awsProfile
