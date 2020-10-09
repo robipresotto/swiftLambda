@@ -2,7 +2,7 @@
 
 set -eu
 
-# 1. Build the image/dependencies to build the lambda runtime
+# 1. Creates the image/dependencies to build the lambda runtime
 docker build -t swift-lambda-builder . && \
 
 # 2. Build the aws lambda runtime
@@ -13,7 +13,7 @@ docker run \
      swift-lambda-builder \
      swift build --product $1 -c release && \
 
-# 3. Copy libs and creates the symlink "bootstrap" to run on lambda
+# 3. Copy libs and creates the symlink
 docker run \
     --rm \
     --volume "$(pwd)/:/src" \
