@@ -12,6 +12,7 @@ Go to the project root and run:
 ```
 
 ### Testing
+Create the api gateway endpoint and run:
 ```shell
 curl  --header "Content-Type: application/json" \
       --request POST \
