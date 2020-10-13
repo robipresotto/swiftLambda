@@ -1,22 +1,38 @@
-// swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.3
 
 import PackageDescription
 
 let package = Package(
-  name: "swift-lambda",
+  name: "swiftLambda",
   products: [
-    .executable(name: "swiftLambda", targets: ["swift-lambda"]),
+    .executable(
+      name: "swiftLambda", 
+      targets: [
+        "swiftLambda"
+      ]
+    )
   ],
   dependencies: [
-    .package(url: "https://github.com/swift-server/swift-aws-lambda-runtime.git", from: "0.1.0"),
+    .package(
+      url: "https://github.com/apple/swift-argument-parser", 
+      .upToNextMinor(from: "0.3.0")
+    )
   ],
   targets: [
     .target(
-      name: "swift-lambda",
+      name: "swiftLambda",
       dependencies: [
-        .product(name: "AWSLambdaRuntime", package: "swift-aws-lambda-runtime")
+        .product(
+          name: "ArgumentParser", 
+          package: "swift-argument-parser"
+        ),
       ]
-    )
+    ),
+    .testTarget(
+      name: "swiftLambdaTests",
+      dependencies: [
+        "swiftLambda"
+      ]
+    ),
   ]
 )
